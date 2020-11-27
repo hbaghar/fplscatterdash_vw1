@@ -33,7 +33,7 @@ alcohol = go.Scatter(
 
 beer_data = [bitterness, alcohol]
 beer_layout = go.Layout(
-    yaxis_zeroline=False, xaxis_zeroline=False
+    yaxis_zeroline=False, xaxis_zeroline=False,
     title = mytitle
 )
 
