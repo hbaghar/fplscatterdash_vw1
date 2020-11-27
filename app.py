@@ -22,12 +22,14 @@ bitterness = go.Scatter(
     x=beers,
     y=ibu_values,
     name=label1,
+    mode="text",
     marker={'color':color1}
 )
 alcohol = go.Scatter(
     x=beers,
     y=abv_values,
     name=label2,
+    mode="text",
     marker={'color':color2}
 )
 
