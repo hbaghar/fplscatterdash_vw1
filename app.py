@@ -11,7 +11,7 @@ mytitle='FPL DB'
 tabtitle='FPL DB!'
 myheading='FPL DB'
 
-data = pd.read_csv(r'.\player_data.csv')
+data = pd.read_csv(r'player_data.csv')
 data.set_index(['id'])
 data.head()
 
