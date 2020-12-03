@@ -66,7 +66,7 @@ app.layout = html.Div(children=[
     html.H1(children = "FPL Dashboard",
            style = {
               'textAlign' : 'center',
-              'color' : '#2376BD'
+              'background' : '#2376BD'
            }
            ),
     
