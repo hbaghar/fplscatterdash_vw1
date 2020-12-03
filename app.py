@@ -184,7 +184,10 @@ def upadte_chart(team_dd_value, pos_dd_value, x_dd_value, y_dd_value, min_mp_val
         y=y_dd_value,
         hover_name="Web Name",
         color="Team Name",
-        )
+        labels={
+          "Team Name": "Team Name"
+        },
+    )
     
     x_med = data1[x_dd_value].median()
     y_med = data1[y_dd_value].median()
