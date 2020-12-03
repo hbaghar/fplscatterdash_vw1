@@ -9,7 +9,6 @@ import pandas as pd
 ########### Define your variables
 mytitle='FPL DB'
 tabtitle='FPL DB!'
-myheading='FPL DB'
 
 data = pd.read_csv(r'player_data.csv')
 data.set_index(['id'])
@@ -64,7 +63,12 @@ xycol = ['Total Points', 'Points per Game', 'Points per mil', 'Goals Scored', 'A
 
 ########### Set up the layout
 app.layout = html.Div(children=[
-    html.H1(myheading),
+    html.H1(children = "FPL Dashboard",
+           style = {
+              'textAlign' : 'center',
+              'color' : '#2376BD'
+           }
+           ),
     
     html.Div(children=[
         html.Div('Select Team(s):'),
