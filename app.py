@@ -194,6 +194,7 @@ def upadte_chart(team_dd_value, pos_dd_value, x_dd_value, y_dd_value, min_mp_val
     print(x_med,y_med)
     
     beer_fig.layout.update(hovermode='closest')
+    beer_fig.update_layout(showlegend=False)
     
     beer_fig.layout.update(
         title = x_dd_value + " vs " + y_dd_value)
