@@ -62,8 +62,51 @@ xycol = ['Total Points', 'Points per Game', 'Points per mil', 'Goals Scored', 'A
          'Bonus', 'BPS', 'Clean sheets', 'Saves', 'Selected by Percent', 'ICT Index', 'Influence', 'Creativity', 'Threat',
          'Form', 'No. of times in Dreamteam', 'Yellow cards', 'Red Cards', 'Total Cards']
 
-#drop_downs = [<Input `min_Assists.value`>, <Input `max_Assists.value`>, <Input `min_Bonus.value`>, <Input `max_Bonus.value`>, <Input `min_BPS.value`>, <Input `max_BPS.value`>, <Input `min_Cleansheets.value`>, <Input `max_Cleansheets.value`>, <Input `min_Creativity.value`>, <Input `max_Creativity.value`>, <Input `min_Form.value`>, <Input `max_Form.value`>, <Input `min_GoalsConceded.value`>, <Input `max_GoalsConceded.value`>, <Input `min_GoalsScored.value`>, <Input `max_GoalsScored.value`>, <Input `min_ICTIndex.value`>, <Input `max_ICTIndex.value`>, <Input `min_Influence.value`>, <Input `max_Influence.value`>, <Input `min_Minutes.value`>, <Input `max_Minutes.value`>, <Input `min_Cost.value`>, <Input `max_Cost.value`>, <Input `min_OwnGoals.value`>, <Input `max_OwnGoals.value`>, <Input `min_PenaltiesMissed.value`>, <Input `max_PenaltiesMissed.value`>, <Input `min_Penaltiessaved.value`>, <Input `max_Penaltiessaved.value`>, <Input `min_PointsperGame.value`>, <Input `max_PointsperGame.value`>, <Input `min_RedCards.value`>, <Input `max_RedCards.value`>, <Input `min_Saves.value`>, <Input `max_Saves.value`>, <Input `min_SelectedbyPercent.value`>, <Input `max_SelectedbyPercent.value`>, <Input `min_Threat.value`>, <Input `max_Threat.value`>, <Input `min_TotalPoints.value`>, <Input `max_TotalPoints.value`>, <Input `min_Yellowcards.value`>, <Input `max_Yellowcards.value`>, <Input `min_TotalCards.value`>, <Input `max_TotalCards.value`>, <Input `min_GWTransfers.value`>, <Input `max_GWTransfers.value`>, <Input `min_Pointspermil.value`>, <Input `max_Pointspermil.value`>]
-#input_list = [<Input `min_Assists.value`>, <Input `max_Assists.value`>, <Input `min_Bonus.value`>, <Input `max_Bonus.value`>, <Input `min_BPS.value`>, <Input `max_BPS.value`>, <Input `min_Cleansheets.value`>, <Input `max_Cleansheets.value`>, <Input `min_Creativity.value`>, <Input `max_Creativity.value`>, <Input `min_Form.value`>, <Input `max_Form.value`>, <Input `min_GoalsConceded.value`>, <Input `max_GoalsConceded.value`>, <Input `min_GoalsScored.value`>, <Input `max_GoalsScored.value`>, <Input `min_ICTIndex.value`>, <Input `max_ICTIndex.value`>, <Input `min_Influence.value`>, <Input `max_Influence.value`>, <Input `min_Minutes.value`>, <Input `max_Minutes.value`>, <Input `min_Cost.value`>, <Input `max_Cost.value`>, <Input `min_OwnGoals.value`>, <Input `max_OwnGoals.value`>, <Input `min_PenaltiesMissed.value`>, <Input `max_PenaltiesMissed.value`>, <Input `min_Penaltiessaved.value`>, <Input `max_Penaltiessaved.value`>, <Input `min_PointsperGame.value`>, <Input `max_PointsperGame.value`>, <Input `min_RedCards.value`>, <Input `max_RedCards.value`>, <Input `min_Saves.value`>, <Input `max_Saves.value`>, <Input `min_SelectedbyPercent.value`>, <Input `max_SelectedbyPercent.value`>, <Input `min_Threat.value`>, <Input `max_Threat.value`>, <Input `min_TotalPoints.value`>, <Input `max_TotalPoints.value`>, <Input `min_Yellowcards.value`>, <Input `max_Yellowcards.value`>, <Input `min_TotalCards.value`>, <Input `max_TotalCards.value`>, <Input `min_GWTransfers.value`>, <Input `max_GWTransfers.value`>, <Input `min_Pointspermil.value`>, <Input `max_Pointspermil.value`>]
+tbl_col=[
+        {'name': 'First Name', 'id': 'First Name', 'deletable': False, 'selectable': False}, 
+        {'name': 'Second Name', 'id': 'Second Name', 'deletable': False, 'selectable': False},
+        {'name': 'Team Name', 'id': 'Team Name', 'deletable': False, 'selectable': False}, 
+        {'name': 'Position', 'id': 'Position', 'deletable': False, 'selectable': False},
+        {'name': 'Cost', 'id': 'Cost', 'deletable': False, 'selectable': False}, 
+        {'name': 'Total Points', 'id': 'Total Points', 'deletable': False, 'selectable': False}, 
+        {'name': 'Minutes', 'id': 'Minutes', 'deletable': False, 'selectable': False}, 
+        {'name': 'Selected by Percent', 'id': 'Selected by Percent', 'deletable': False, 'selectable': False}, 
+        {'name': 'Points per Game', 'id': 'Points per Game', 'deletable': False, 'selectable': False}, 
+        {'name': 'Points per mil', 'id': 'Points per mil', 'deletable': False, 'selectable': False}, 
+        {'name': 'GW Transfers', 'id': 'GW Transfers', 'deletable': False, 'selectable': False},
+        {'name': 'Goals Scored', 'id': 'Goals Scored', 'deletable': False, 'selectable': False}, 
+        {'name': 'Assists', 'id': 'Assists', 'deletable': False, 'selectable': False}, 
+        {'name': 'Goals Conceded', 'id': 'Goals Conceded', 'deletable': False, 'selectable': False}, 
+        {'name': 'Saves', 'id': 'Saves', 'deletable': False, 'selectable': False}, 
+        {'name': 'Bonus', 'id': 'Bonus', 'deletable': False, 'selectable': False}, 
+        {'name': 'BPS', 'id': 'BPS', 'deletable': False, 'selectable': False},
+        {'name': 'ICT Index', 'id': 'ICT Index', 'deletable': False, 'selectable': False}, 
+        {'name': 'Influence', 'id': 'Influence', 'deletable': False, 'selectable': False}, 
+        {'name': 'Creativity', 'id': 'Creativity', 'deletable': False, 'selectable': False}, 
+        {'name': 'Threat', 'id': 'Threat', 'deletable': False, 'selectable': False}, 
+        {'name': 'Form', 'id': 'Form', 'deletable': False, 'selectable': False}, 
+        {'name': 'Clean sheets', 'id': 'Clean sheets', 'deletable': False, 'selectable': False}, 
+        {'name': 'Total Cards', 'id': 'Total Cards', 'deletable': False, 'selectable': False},
+        {'name': 'Red Cards', 'id': 'Red Cards', 'deletable': False, 'selectable': False}, 
+        {'name': 'Yellow cards', 'id': 'Yellow cards', 'deletable': False, 'selectable': False}, 
+        {'name': 'Cost change event', 'id': 'Cost change event', 'deletable': False, 'selectable': False},
+        {'name': 'Penalties Missed', 'id': 'Penalties Missed', 'deletable': False, 'selectable': False},
+        {'name': 'Penalties saved', 'id': 'Penalties saved', 'deletable': False, 'selectable': False}, 
+        {'name': 'EP next', 'id': 'EP next', 'deletable': False, 'selectable': False},
+        {'name': 'EP this', 'id': 'EP this', 'deletable': False, 'selectable': False},
+        {'name': 'Own Goals', 'id': 'Own Goals', 'deletable': False, 'selectable': False}, 
+        {'name': 'No. of times in Dreamteam', 'id': 'No. of times in Dreamteam', 'deletable': False, 'selectable': False}
+    ]
+
+# the style arguments for the sidebar. We use position:fixed and a fixed width
+TOPBAR_STYLE = {
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "100rem",
+    # "padding": "10px 10px",
+}
 
 ########### Set up the layout
 app.layout = html.Div(children=[
