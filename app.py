@@ -108,6 +108,150 @@ TOPBAR_STYLE = {
     # "padding": "10px 10px",
 }
 
+SIDEBAR_STYLE = {
+    "position": "fixed",
+    "top": '100px',
+    "left": 0,
+    "bottom": 0,
+    "width": "16rem",
+    "padding": "10px 10px",
+    "background-color": "#f8f9fa",
+    'overflowY': 'scroll',
+}
+
+# the styles for the main content position it to the right of the sidebar and
+# add some padding.
+CONTENT_STYLE = {
+    "position": "fixed",
+    "top": '100px',
+    "bottom": 0,
+    "margin-left": "18rem",
+    "margin-right": "2rem",
+    "width": "75rem",
+    # "padding": "2rem 1rem",
+    'overflowX': 'scroll',
+    # 'overflowY': 'scroll',
+}
+
+operators = [['ge ', '>='],
+             ['le ', '<='],
+             ['lt ', '<'],
+             ['gt ', '>'],
+             ['ne ', '!='],
+             ['eq ', '='],
+             ['contains '],
+             ['datestartswith ']]
+
+def split_filter_part(filter_part):
+    for operator_type in operators:
+        for operator in operator_type:
+            if operator in filter_part:
+                name_part, value_part = filter_part.split(operator, 1)
+                name = name_part[name_part.find('{') + 1: name_part.rfind('}')]
+
+                value_part = value_part.strip()
+                v0 = value_part[0]
+                if (v0 == value_part[-1] and v0 in ("'", '"', '`')):
+                    value = value_part[1: -1].replace('\\' + v0, v0)
+                else:
+                    try:
+                        value = float(value_part)
+                    except ValueError:
+                        value = value_part
+
+                # word operators need spaces after them in the filter string,
+                # but we don't want these later
+                return name, operator_type[0].strip(), value
+
+    return [None] * 3
+
+topbar = html.Div(
+    [
+        html.H2("FPL Player Screener", className="display-4", 
+                style={'backgroundColor': '#02894E', 'padding': '10px', 'textAlign': 'center', 'color': 'white', 'font-family': 'Snell Roundhand'},
+                ),
+        html.Hr(),
+    ],
+    style=TOPBAR_STYLE,
+)
+
+sidebar = html.Div(
+    [
+        html.P(
+            "Filter for Players:", className="lead"
+        ),
+        dbc.Row([
+            
+            dbc.Col([
+                dbc.Col([html.Label(f'Team Names:', style={'display':'inline', 'fontSize':16, 'padding': '5px', 'vertical-align': 'middle'}),]),
+                dbc.Col([
+                    html.Div(f'Arsenal, Aston Villa, Brighton & Howe Albion, Burnley, Chelsea, Crystal Palace, Everton, Fulham, Leeds United, Leicester City, Liverpool, Manchester City, Newcastle United, Sheffield United, Southampton, Spurs, West Brom, West Ham United, Wolves, Manchester United', 
+                            id=f'TNameTxt', 
+                            style={'display':'inline', 'fontSize':8, 'padding': '5px', 'vertical-align': 'middle', 'color': '9f91aa'}),
+                    dcc.Dropdown(id=f'TeamName', multi=True,
+                                options = [{'label': i, 'value': i} for i in sorted(df['Team Name'].unique())]
+                                ,value=['Arsenal', 'Aston Villa', 'Brighton & Howe Albion', 'Burnley', 'Chelsea', 
+                                      'Crystal Palace', 'Everton', 'Fulham', 'Leeds United', 'Leicester City', 
+                                      'Liverpool', 'Manchester City', 'Newcastle United', 'Sheffield United', 
+                                      'Southampton', 'Spurs', 'West Brom', 'West Ham United', 'Wolves', 'Manchester United']
+                                ,style={'display': 'inline-block', 'width': '200px', 'padding': '0px', 'margin': '0'}
+                                )])]
+                , width=500, 
+            ),
+
+            dbc.Col([
+                dbc.Col([html.Label(f'Position', style={'display':'inline', 'fontSize':16, 'padding': '5px', 'vertical-align': 'middle'}),]),
+                dbc.Col([
+                    html.Div(f'Goalkeepers, Defenders, Midfielders, Forwards', 
+                            id=f'PosTxt', 
+                            style={'display':'inline', 'fontSize':8, 'padding': '5px', 'vertical-align': 'middle', 'color': '9f91aa'}),
+                    dcc.Dropdown(id=f'Position', multi=True,
+                            options = [{'label': i, 'value': i} for i in sorted(df['Position'].unique())]
+                            ,value=['Goalkeepers', 'Defenders', 'Midfielders', 'Forwards']
+                            ,style={'display': 'inline-block', 'width': '200px', 'padding': '0px', 'margin': '0'}
+                            )])]
+                , width=500, 
+            ),
+
+            dbc.Col(drop_downs, width=500),
+
+            dbc.Col(id='op', width=500),
+        ])
+    ],
+    style=SIDEBAR_STYLE,
+)
+
+content = html.Div([
+            dash_table.DataTable(
+                id='player_tbl',
+                columns=tbl_col,
+                data=df.to_dict('records'),
+                editable=False,
+                filter_action="custom",
+                filter_query="",
+                sort_action="native",
+                sort_mode='multi',
+                # row_selectable='multi',
+                row_deletable=False,
+                selected_rows=[],
+                page_action='native',
+                page_current= 0,
+                style_header={
+                    'backgroundColor': '#37003C',
+                    'color': 'white',
+                    'fontWeight': 'bold'
+                },
+                style_cell_conditional=[
+                        {'textAlign': 'center',
+                        'backgroundColor':'#EFEFEF'}
+                ],
+                page_size= 20,
+            ),
+            ],
+            style=CONTENT_STYLE,
+        )
+
+
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(children = "FPL Dashboard",
