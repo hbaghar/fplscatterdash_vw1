@@ -62,6 +62,28 @@ xycol = ['Total Points', 'Points per Game', 'Points per mil', 'Goals Scored', 'A
          'Bonus', 'BPS', 'Clean sheets', 'Saves', 'Selected by Percent', 'ICT Index', 'Influence', 'Creativity', 'Threat',
          'Form', 'No. of times in Dreamteam', 'Yellow cards', 'Red Cards', 'Total Cards']
 
+drop_downs = []
+
+for i in ['Assists', 'Bonus', 'BPS', 'Clean sheets', 'Creativity', 'Form', 'Goals Conceded', 'Goals Scored', 'ICT Index', 'Influence',
+           'Minutes', 'Cost', 'Own Goals', 'Penalties Missed', 'Penalties saved', 'Points per Game', 'Red Cards', 'Saves', 
+           'Selected by Percent', 'Threat', 'Total Points', 'Yellow cards', 'Total Cards', 'GW Transfers', 'Points per mil']:
+           j = i.replace(" ","")
+           drop_downs.append(
+            html.Div([
+              html.Label(f'{i}', style={'display':'inline', 'fontSize':16, 'padding': '5px', 'vertical-align': 'middle'}),
+              dcc.Dropdown(id=f'min_{j}', multi=False,
+                            options = [{'label': i, 'value': i} for i in sorted(df[i].unique())]
+                            ,value=df[i].min()
+                            ,style={'display': 'inline-block', 'width': '60px', 'padding': '0', 'margin': '0'}
+                            ),
+              dcc.Dropdown(id=f'max_{j}', multi=False,
+                            options = [{'label': i, 'value': i} for i in sorted(df[i].unique())]
+                            ,value=df[i].max()
+                            ,style={'display': 'inline-block', 'width': '60px', 'padding': '0', 'margin': '0'}
+                            ),
+              ], style={'textAlign':'start'}
+              ))
+
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1(children = "FPL Dashboard",
