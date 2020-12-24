@@ -328,4 +328,4 @@ def update_op(filter, TeamName, Position, min_Assists, max_Assists, min_Bonus, m
     return dff.to_dict('records'), tbl_col, 'Selected Teams: ' + ', '.join(TeamName), 'Selected Positions: ' + ', '.join(Position)
 
 if __name__ == "__main__":
-    app.run_server(debug=False)
+    app.run_server()
